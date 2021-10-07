@@ -1,0 +1,2 @@
+noteSequence=JSON.parse(noteSequence);
+$(noteSequence)

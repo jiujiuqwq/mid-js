@@ -1,0 +1,42 @@
+let width = device.height;
+let height = device.width;
+let me=81;
+let Xbi = (width - me) / 2340;
+let Ybi = height / 1080;
+toast("作者:宁清&玖酒,交流群:1126747937");
+toast("勿与手弹玩家比较，仅供娱乐");
+let Arr = function () {
+  let Arr = [];
+  for (let i = 0; i < 52; i++) {
+    Arr[i] = i * 45 + 25;
+  }
+  for (var i = 0, len = Arr.length - 2; i < len; i++) {
+    if (i % 7 == 0 || i % 7 == 1 || i % 7 == 3 || i % 7 == 4 || i % 7 == 5) {
+      Arr.push(Arr[i + 2] + 25);
+    }
+  }
+  Arr.push(Arr[0] + 25);
+  Arr.sort(function (x, y) {
+    if (x < y) {
+      return -1;
+    } else if (x > y) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return Arr;
+}();
+function $(arr) {
+  let gesturesAry=[]
+  arr.forEach((item,index) => {
+    let time=0;
+    time=index<arr.length-1 ? arr[index+1].time:0;
+    time=time ? time : 8;
+    gesturesAry.push([[0,time,[Arr[item.i] * Xbi,900*Ybi]]]);
+  });
+  for (let i = 0; i < gesturesAry.length; i++) {
+    gestures.apply(null, gesturesAry[i]);
+    sleep(5);
+  }
+}
